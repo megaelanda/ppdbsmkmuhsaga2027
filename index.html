@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPDB Online - SMK Muhammadiyah Sangasanga</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#1A49AF',
+                            secondary: '#009eff',
+                            accent: '#FFD850',
+                            dark: '#0e2b6b',
+                            light: '#f0f6ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1A49AF 0%, #009eff 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #1A49AF 0%, #009eff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .twibbon-frame {
+            border: 12px solid #1A49AF;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & School Name -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center text-brand-accent font-bold text-2xl shadow-lg border-2 border-brand-accent">
+                        <i class="fa-solid fa-[#1A49AF] fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold text-brand-primary block leading-tight tracking-wide">SMK MUHAMMADIYAH</span>
+                        <span class="text-xs font-semibold text-brand-secondary tracking-wider block uppercase">Sangasanga</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 font-medium">
+                    <a href="#beranda" class="text-gray-700 hover:text-brand-primary transition">Beranda</a>
+                    <a href="#jurusan" class="text-gray-700 hover:text-brand-primary transition">Jurusan</a>
+                    <a href="#alur" class="text-gray-700 hover:text-brand-primary transition">Alur Pendaftaran</a>
+                    <a href="#pendataan" class="text-gray-700 hover:text-brand-primary transition">Data Pendaftar</a>
+                    <a href="#twibbon" class="text-gray-700 hover:text-brand-primary transition">Twibbon Siswa</a>
+                </nav>
+
+                <!-- Action CTA -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="#daftar" class="bg-brand-accent hover:bg-yellow-400 text-brand-dark px-6 py-2.5 rounded-full font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-paper-plane mr-2"></i>Daftar Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-primary focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-3">
+            <a href="#beranda" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-light hover:text-brand-primary">Beranda</a>
+            <a href="#jurusan" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-light hover:text-brand-primary">Jurusan</a>
+            <a href="#alur" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-light hover:text-brand-primary">Alur Pendaftaran</a>
+            <a href="#pendataan" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-light hover:text-brand-primary">Data Pendaftar</a>
+            <a href="#twibbon" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-brand-light hover:text-brand-primary">Twibbon Siswa</a>
+            <a href="#daftar" class="block w-full text-center bg-brand-accent text-brand-dark px-4 py-2.5 rounded-lg font-bold">Daftar Sekarang</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative gradient-bg text-white py-20 lg:py-32 overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-brand-accent text-sm font-semibold border border-white/20">
+                        <i class="fa-solid fa-star"></i>
+                        <span>PPDB TA 2026/2027 Telah Dibuka</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        Create Your Future, <br>
+                        <span class="text-brand-accent underline underline-offset-8 decoration-wavy">Inspire the Nation</span>
+                    </h1>
+                    <p class="text-lg text-blue-100 max-w-xl mx-auto lg:mx-0">
+                        Bergabunglah bersama SMK Muhammadiyah Sangasanga. Sekolah kejuruan unggulan yang siap mencetak generasi berkarakter, berkompeten, dan berdaya saing global!
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start pt-4">
+                        <a href="#daftar" class="bg-brand-accent hover:bg-yellow-400 text-brand-dark font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 text-center">
+                            <i class="fa-solid fa-user-plus mr-2"></i>Isi Formulir PPDB
+                        </a>
+                        <a href="#twibbon" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold px-8 py-4 rounded-xl border border-white/30 transition-all text-center">
+                            <i class="fa-solid fa-camera mr-2"></i>Buat Twibbon Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card Quick Stats / Banner Image -->
+                <div class="relative">
+                    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-3xl border border-white/20 shadow-2xl relative">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-6 rounded-2xl text-gray-800 shadow-sm text-center">
+                                <i class="fa-solid fa-users text-4xl text-brand-primary mb-2"></i>
+                                <h3 id="stat-pendaftar" class="text-3xl font-extrabold text-brand-primary">0</h3>
+                                <p class="text-sm text-gray-500 font-medium">Calon Pendaftar</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl text-gray-800 shadow-sm text-center">
+                                <i class="fa-solid fa-receipt text-4xl text-brand-secondary mb-2"></i>
+                                <h3 id="stat-lunas" class="text-3xl font-extrabold text-brand-secondary">0</h3>
+                                <p class="text-sm text-gray-500 font-medium">Terverifikasi Lunas</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl text-gray-800 shadow-sm text-center">
+                                <i class="fa-solid fa-award text-4xl text-yellow-500 mb-2"></i>
+                                <h3 class="text-3xl font-extrabold text-yellow-500">A</h3>
+                                <p class="text-sm text-gray-500 font-medium">Akreditasi Sekolah</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl text-gray-800 shadow-sm text-center">
+                                <i class="fa-solid fa-handshake text-4xl text-emerald-500 mb-2"></i>
+                                <h3 class="text-3xl font-extrabold text-emerald-500">20+</h3>
+                                <p class="text-sm text-gray-500 font-medium">Mitra Industri</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Keahlian / Jurusan -->
+    <section id="jurusan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Program Keahlian</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Pilih Masa Depanmu Di Sini</h3>
+                <div class="w-20 h-1.5 bg-brand-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Jurusan 1 -->
+                <div class="border border-gray-100 rounded-2xl bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-primary group">
+                    <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Teknik Komputer & Jaringan</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Menguasai rekayasa perangkat keras, konfigurasi jaringan jaringan server, cloud computing, dan keamanan cyber security.
+                    </p>
+                    <span class="inline-block bg-brand-light text-brand-primary text-xs font-semibold px-3 py-1 rounded-full">TKJ</span>
+                </div>
+
+                <!-- Jurusan 2 -->
+                <div class="border border-gray-100 rounded-2xl bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-t-brand-secondary group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-secondary text-2xl mb-6 group-hover:bg-brand-secondary group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Teknik Kendaraan Ringan</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Mempelajari perawatan, perbaikan mesin otomotif modern, kelistrikan kendaraan, serta teknologi mobil efisien.
+                    </p>
+                    <span class="inline-block bg-blue-50 text-brand-secondary text-xs font-semibold px-3 py-1 rounded-full">TKR</span>
+                </div>
+
+                <!-- Jurusan 3 -->
+                <div class="border border-gray-100 rounded-2xl bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-t-yellow-400 group">
+                    <div class="w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-600 text-2xl mb-6 group-hover:bg-yellow-400 group-hover:text-gray-900 transition-colors">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Akuntansi & Keuangan</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        Menyiapkan tenaga terampil pencatatan keuangan digital, perpajakan, perbankan, dan administrasi bisnis terpadu.
+                    </p>
+                    <span class="inline-block bg-yellow-50 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full">AKL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Pendaftaran -->
+    <section id="daftar" class="py-20 bg-brand-light relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="gradient-bg p-8 text-white text-center">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold">Form Pendaftaran Siswa Baru</h3>
+                    <p class="text-blue-100 text-sm mt-2">Lengkapi data diri calon siswa dengan benar di bawah ini</p>
+                </div>
+
+                <form id="form-ppdb" class="p-8 sm:p-12 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Nama Lengkap -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap Siswa *</label>
+                            <input type="text" id="nama" required placeholder="Contoh: Ahmad Rizky" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary focus:border-transparent outline-none transition">
+                        </div>
+
+                        <!-- NISN -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">NISN *</label>
+                            <input type="number" id="nisn" required placeholder="10 Digit NISN" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary focus:border-transparent outline-none transition">
+                        </div>
+
+                        <!-- Asal Sekolah -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Asal Sekolah (SMP/MTs) *</label>
+                            <input type="text" id="asal_sekolah" required placeholder="SMP Negeri 1 Sangasanga" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary focus:border-transparent outline-none transition">
+                        </div>
+
+                        <!-- Nomor WhatsApp -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">No. WhatsApp / HP *</label>
+                            <input type="tel" id="whatsapp" required placeholder="081234567890" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary focus:border-transparent outline-none transition">
+                        </div>
+
+                        <!-- Pilih Jurusan -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Pilihan Jurusan *</label>
+                            <select id="jurusan_pilihan" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary focus:border-transparent outline-none transition">
+                                <option value="" disabled selected>-- Pilih Jurusan --</option>
+                                <option value="Teknik Komputer & Jaringan">Teknik Komputer & Jaringan (TKJ)</option>
+                                <option value="Teknik Kendaraan Ringan">Teknik Kendaraan Ringan (TKR)</option>
+                                <option value="Akuntansi & Keuangan">Akuntansi & Keuangan (AKL)</option>
+                            </select>
+                        </div>
+
+                        <!-- Status Pembayaran Awal -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Status Pembayaran Registrasi *</label>
+                            <select id="status_bayar" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary focus:border-transparent outline-none transition">
+                                <option value="Belum Bayar">Belum Bayar</option>
+                                <option value="Sudah Bayar">Sudah Bayar (Konfirmasi Lunas)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-brand-primary hover:bg-brand-dark text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Pendaftaran Sekarang
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabel Pendataan Siswa Pendaftar -->
+    <section id="pendataan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                <div>
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-1">Data Realtime</h2>
+                    <h3 class="text-3xl font-extrabold text-gray-900">Pendataan Siswa Pendaftar</h3>
+                </div>
+                
+                <!-- Filter & Search -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <input type="text" id="search-input" placeholder="Cari Nama / NISN..." class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-secondary text-sm">
+                    <select id="filter-jurusan" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-secondary">
+                        <option value="ALL">Semua Jurusan</option>
+                        <option value="Teknik Komputer & Jaringan">TKJ</option>
+                        <option value="Teknik Kendaraan Ringan">TKR</option>
+                        <option value="Akuntansi & Keuangan">AKL</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table container -->
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-md border border-gray-100">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-brand-primary text-white text-sm">
+                            <th class="p-4 rounded-tl-2xl">No</th>
+                            <th class="p-4">Nama Siswa</th>
+                            <th class="p-4">NISN</th>
+                            <th class="p-4">Asal Sekolah</th>
+                            <th class="p-4">Jurusan</th>
+                            <th class="p-4">Status Bayar</th>
+                            <th class="p-4 rounded-tr-2xl text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-pendaftar-body" class="divide-y divide-gray-100 text-sm text-gray-700">
+                        <!-- Data dimasukkan secara dinamis melalui JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generator Twibbon Section -->
+    <section id="twibbon" class="py-20 bg-gradient-to-b from-gray-50 to-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-brand-accent/30 text-brand-dark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Fitur Spesial</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">Twibbon Siswa Baru</h2>
+                <p class="text-gray-600 mt-2">Dapatkan Twibbon keren bertema <span class="font-bold text-brand-primary">"Create Your Future, Inspire the Nation"</span> untuk dipasang di sosial media kamu!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Preview Canvas -->
+                <div class="flex flex-col items-center">
+                    <div class="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-white shadow-2xl border-4 border-white">
+                        <canvas id="twibbon-canvas" width="600" height="600" class="w-full h-full object-contain cursor-move"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3"><i class="fa-solid fa-hand-pointer mr-1"></i> Geser foto di area canvas untuk menyesuaikan posisi</p>
+                </div>
+
+                <!-- Twibbon Controls -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 space-y-6">
+                    <h3 class="text-xl font-bold text-gray-900 border-b pb-4">Pengaturan Twibbon</h3>
+                    
+                    <!-- Upload Input -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">1. Upload Foto Kamu</label>
+                        <input type="file" id="upload-foto" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-brand-light file:text-brand-primary hover:file:bg-blue-100">
+                    </div>
+
+                    <!-- Input Nama Twibbon -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">2. Nama Di Twibbon</label>
+                        <input type="text" id="twibbon-nama" placeholder="Masukkan Nama Kamu..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-secondary outline-none text-sm">
+                    </div>
+
+                    <!-- Zoom Scale Slider -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">3. Ukuran Foto (Zoom)</label>
+                        <input type="range" id="zoom-slider" min="0.2" max="3" step="0.05" value="1" class="w-full accent-brand-secondary">
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                        <button id="btn-download" class="flex-1 bg-brand-primary hover:bg-brand-dark text-white font-bold py-3 px-6 rounded-xl shadow-md transition text-center flex items-center justify-center">
+                            <i class="fa-solid fa-download mr-2"></i> Download Twibbon
+                        </button>
+                        <button id="btn-reset-twibbon" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-4 rounded-xl transition">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-blue-900">
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-brand-accent rounded-lg flex items-center justify-center text-brand-dark font-bold text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-lg font-bold text-white">SMK Muhammadiyah Sangasanga</span>
+                </div>
+                <p class="text-blue-200 text-sm leading-relaxed">
+                    Mewujudkan lulusan unggul, islami, terampil, dan mampu bersaing di dunia industri modern.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold text-brand-accent mb-4">Kontak & Alamat</h4>
+                <ul class="text-blue-200 text-sm space-y-2">
+                    <li><i class="fa-solid fa-location-dot mr-2 text-brand-secondary"></i> Jl. Pendidikan No. 12, Sangasanga, Kaltim</li>
+                    <li><i class="fa-solid fa-phone mr-2 text-brand-secondary"></i> (0541) 1234-5678</li>
+                    <li><i class="fa-solid fa-envelope mr-2 text-brand-secondary"></i> info@smkmuhsangasanga.sch.id</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold text-brand-accent mb-4">Semboyan</h4>
+                <p class="text-xl font-extrabold italic text-white mb-2">"Create your Future, Inspire the nation"</p>
+                <div class="flex space-x-3 mt-4">
+                    <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-secondary transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-secondary transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-secondary transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 text-center text-xs text-blue-300">
+            &copy; 2026 SMK Muhammadiyah Sangasanga. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Custom Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-6 py-4 rounded-xl shadow-2xl hidden transition-all duration-300 z-50 flex items-center space-x-3 border border-gray-700">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <span id="toast-message" class="text-sm font-medium">Notifikasi</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data Awal Pendaftar (Mock Data)
+        let dataPendaftar = [
+            { id: 1, nama: "Budi Santoso", nisn: "0051234567", asal: "SMPN 1 Sangasanga", jurusan: "Teknik Komputer & Jaringan", status: "Sudah Bayar" },
+            { id: 2, nama: "Siti Rahma", nisn: "0059876543", asal: "MTs Negeri Sangasanga", jurusan: "Akuntansi & Keuangan", status: "Belum Bayar" },
+            { id: 3, nama: "Andi Wijaya", nisn: "0061122334", asal: "SMPN 2 Sangasanga", jurusan: "Teknik Kendaraan Ringan", status: "Sudah Bayar" }
+        ];
+
+        // Setup Init
+        window.onload = function() {
+            renderTable();
+            updateStats();
+            initTwibbon();
+        };
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toast Notification Helper
+        function showToast(msg, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.innerText = msg;
+            toastIcon.className = isSuccess ? "fa-solid fa-circle-check text-emerald-400 text-xl" : "fa-solid fa-triangle-exclamation text-red-400 text-xl";
+            
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        // Form Submit Handler
+        const formPPDB = document.getElementById('form-ppdb');
+        formPPDB.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nama = document.getElementById('nama').value.trim();
+            const nisn = document.getElementById('nisn').value.trim();
+            const asal = document.getElementById('asal_sekolah').value.trim();
+            const jurusan = document.getElementById('jurusan_pilihan').value;
+            const status = document.getElementById('status_bayar').value;
+
+            // Tambah data baru
+            const newItem = {
+                id: Date.now(),
+                nama: nama,
+                nisn: nisn,
+                asal: asal,
+                jurusan: jurusan,
+                status: status
+            };
+
+            dataPendaftar.unshift(newItem);
+            renderTable();
+            updateStats();
+            formPPDB.reset();
+
+            // Set otomatis nama ke twibbon
+            document.getElementById('twibbon-nama').value = nama;
+            drawTwibbon();
+
+            showToast("Pendaftaran berhasil disimpan!");
+            
+            // Scroll halus ke tabel data
+            document.getElementById('pendataan').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Render Data Tabel
+        function renderTable() {
+            const tbody = document.getElementById('table-pendaftar-body');
+            const searchVal = document.getElementById('search-input').value.toLowerCase();
+            const filterJurusan = document.getElementById('filter-jurusan').value;
+
+            tbody.innerHTML = "";
+
+            const filteredData = dataPendaftar.filter(item => {
+                const matchSearch = item.nama.toLowerCase().includes(searchVal) || item.nisn.includes(searchVal);
+                const matchJurusan = filterJurusan === "ALL" || item.jurusan === filterJurusan;
+                return matchSearch && matchJurusan;
+            });
+
+            if(filteredData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-gray-400">Tidak ada data pendaftar ditemukan</td></tr>`;
+                return;
+            }
+
+            filteredData.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50 transition border-b border-gray-100";
+                
+                const isPaid = item.status === "Sudah Bayar";
+                const badgeClass = isPaid ? "bg-emerald-100 text-emerald-700 border-emerald-300" : "bg-amber-100 text-amber-700 border-amber-300";
+
+                tr.innerHTML = `
+                    <td class="p-4 font-semibold text-gray-500">${index + 1}</td>
+                    <td class="p-4 font-bold text-gray-900">${item.nama}</td>
+                    <td class="p-4">${item.nisn}</td>
+                    <td class="p-4">${item.asal}</td>
+                    <td class="p-4"><span class="bg-blue-50 text-brand-primary text-xs font-semibold px-2.5 py-1 rounded-md">${item.jurusan}</span></td>
+                    <td class="p-4"><span class="text-xs px-2.5 py-1 rounded-full border font-medium ${badgeClass}">${item.status}</span></td>
+                    <td class="p-4 text-center">
+                        <button onclick="toggleStatus(${item.id})" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg border transition">
+                            <i class="fa-solid fa-arrows-rotate mr-1"></i> Ubah Bayar
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Toggle Status Bayar
+        function toggleStatus(id) {
+            const index = dataPendaftar.findIndex(item => item.id === id);
+            if(index !== -1) {
+                dataPendaftar[index].status = dataPendaftar[index].status === "Sudah Bayar" ? "Belum Bayar" : "Sudah Bayar";
+                renderTable();
+                updateStats();
+                showToast("Status pembayaran diperbarui");
+            }
+        }
+
+        // Update Counter Stats
+        function updateStats() {
+            document.getElementById('stat-pendaftar').innerText = dataPendaftar.length;
+            const lunasCount = dataPendaftar.filter(i => i.status === "Sudah Bayar").length;
+            document.getElementById('stat-lunas').innerText = lunasCount;
+        }
+
+        // Event Listener Filter & Search
+        document.getElementById('search-input').addEventListener('input', renderTable);
+        document.getElementById('filter-jurusan').addEventListener('change', renderTable);
+
+        /* ====================================================
+           TWIBBON ENGINE (CANVAS 2D)
+        ==================================================== */
+        const canvas = document.getElementById('twibbon-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let userImage = null;
+        let imgX = canvas.width / 2;
+        let imgY = canvas.height / 2;
+        let imgScale = 1;
+        let isDragging = false;
+        let startX, startY;
+
+        function initTwibbon() {
+            drawTwibbon();
+        }
+
+        // Handle Image Upload
+        document.getElementById('upload-foto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        userImage = img;
+                        // Reset Position & Scale
+                        imgX = canvas.width / 2;
+                        imgY = canvas.height / 2;
+                        imgScale = 1;
+                        document.getElementById('zoom-slider').value = 1;
+                        drawTwibbon();
+                    }
+                    img.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Event Zoom Slider
+        document.getElementById('zoom-slider').addEventListener('input', function(e) {
+            imgScale = parseFloat(e.target.value);
+            drawTwibbon();
+        });
+
+        // Event Nama Input
+        document.getElementById('twibbon-nama').addEventListener('input', drawTwibbon);
+
+        // Reset Twibbon
+        document.getElementById('btn-reset-twibbon').addEventListener('click', function() {
+            userImage = null;
+            document.getElementById('upload-foto').value = '';
+            document.getElementById('twibbon-nama').value = '';
+            document.getElementById('zoom-slider').value = 1;
+            drawTwibbon();
+        });
+
+        // Mouse Dragging on Canvas
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging && userImage) {
+                const rect = canvas.getBoundingClientRect();
+                const currentX = e.clientX - rect.left;
+                const currentY = e.clientY - rect.top;
+
+                // Hitung Rasio Canvas Display vs Actual Width
+                const factor = canvas.width / rect.width;
+                imgX += (currentX - startX) * factor;
+                imgY += (currentY - startY) * factor;
+
+                startX = currentX;
+                startY = currentY;
+                drawTwibbon();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => isDragging = false);
+        canvas.addEventListener('mouseleave', () => isDragging = false);
+
+        // Render Canvas Twibbon
+        function drawTwibbon() {
+            // Clear Canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 1. Draw User Image (Background Layer)
+            if (userImage) {
+                ctx.save();
+                ctx.translate(imgX, imgY);
+                ctx.scale(imgScale, imgScale);
+                ctx.drawImage(userImage, -userImage.width / 2, -userImage.height / 2);
+                ctx.restore();
+            } else {
+                // Placeholder Background
+                ctx.fillStyle = '#E5E7EB';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#9CA3AF';
+                ctx.font = '20px Poppins';
+                ctx.textAlign = 'center';
+                ctx.fillText('Upload Foto Anda Di Sini', canvas.width / 2, canvas.height / 2);
+            }
+
+            // 2. Draw Twibbon Frame Overlay
+            // Header Top Bar Accent
+            ctx.fillStyle = '#1A49AF'; // Primary Color
+            ctx.fillRect(0, 0, canvas.width, 90);
+
+            ctx.fillStyle = '#FFD850'; // Accent Yellow Stripe
+            ctx.fillRect(0, 85, canvas.width, 10);
+
+            // Header Text
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 24px Poppins';
+            ctx.textAlign = 'left';
+            ctx.fillText('SMK MUHAMMADIYAH SANGASANGA', 30, 50);
+
+            // Outer Border Frame
+            ctx.lineWidth = 24;
+            ctx.strokeStyle = '#1A49AF';
+            ctx.strokeRect(0, 0, canvas.width, canvas.height);
+
+            // Bottom Banner Overlay
+            ctx.fillStyle = 'rgba(26, 73, 175, 0.92)';
+            ctx.fillRect(20, canvas.height - 150, canvas.width - 40, 130);
+
+            // Bottom Yellow Accent Line
+            ctx.fillStyle = '#FFD850';
+            ctx.fillRect(20, canvas.height - 150, canvas.width - 40, 6);
+
+            // Slogan Theme Text
+            ctx.fillStyle = '#FFD850';
+            ctx.font = 'italic bold 20px Poppins';
+            ctx.textAlign = 'center';
+            ctx.fillText('"Create your Future, Inspire the nation"', canvas.width / 2, canvas.height - 115);
+
+            // Badge / Nama
+            const namaSiswa = document.getElementById('twibbon-nama').value.trim() || 'CALON SISWA BARU';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 22px Poppins';
+            ctx.fillText(namaSiswa.toUpperCase(), canvas.width / 2, canvas.height - 70);
+
+            // Badge Subtitle
+            ctx.fillStyle = '#009eff';
+            ctx.font = '600 14px Poppins';
+            ctx.fillText('SIAP BERGABUNG PPDB TA 2026/2027', canvas.width / 2, canvas.height - 40);
+        }
+
+        // Download Twibbon
+        document.getElementById('btn-download').addEventListener('click', function() {
+            if(!userImage) {
+                showToast("Silakan upload foto terlebih dahulu!", false);
+                return;
+            }
+            // Use execCommand or direct dynamic anchor download
+            const link = document.createElement('a');
+            link.download = 'Twibbon-PPDB-SMK-Muhammadiyah.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showToast("Twibbon berhasil diunduh!");
+        });
+    </script>
+</body>
+</html>
